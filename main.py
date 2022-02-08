@@ -1,6 +1,10 @@
-from selenium import webdriver
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from msedge.selenium_tools import Edge, EdgeOptions
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import pyperclip
 import time
 import schedule
@@ -48,6 +52,13 @@ def prepare_login(userid,userpw):
 
 def login():
     driver.find_element_by_id('btnlogin').click()
+    try:
+        alert = driver.switch_to_alert()
+        print("alert: " + alert.text)
+        alert.accept()
+        alert.dismiss()
+    except:
+        pass
 
 def register_course(registration):
     old = len(get_succeeded_list())
