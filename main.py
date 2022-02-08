@@ -61,6 +61,8 @@ def login():
         pass
 
 def register_course(registration):
+    WebDriverWait(driver, 10000000000000000000, 0.01).until(EC.presence_of_element_located((By.ID, "txtCode")))
+
     old = len(get_succeeded_list())
     set_value_by_id('txtCode',registration[0])
     set_value_by_id('txtBunban',registration[1])
