@@ -42,8 +42,16 @@ def set_value_by_id(id, value):
     ActionChains(driver).key_down(Keys.CONTROL).send_keys('a').send_keys(Keys.BACKSPACE).send_keys('v').key_up(Keys.CONTROL).perform()
 
 def get_succeeded_list():
+    WebDriverWait(driver, 10000000000000000000, 0.01).until(EC.presence_of_element_located((By.ID, "dgSinchungList")))
     dgSinchungList = driver.find_element_by_id('dgSinchungList')
-    return dgSinchungList.find_elements_by_tag_name('tr')[1:]
+    err_count = 0
+    while True:
+        try:
+            return dgSinchungList.find_elements_by_tag_name('tr')[1:]
+        except:
+            err_count += 1
+            if err_count >= 20:
+                raise 'wtf'
 
 def prepare_login(userid,userpw):
     driver.get('https://sugang.pusan.ac.kr/sugang/login.aspx')
