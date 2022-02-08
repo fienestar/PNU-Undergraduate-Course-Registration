@@ -105,4 +105,4 @@ schedule.every().day.at(option['start_at']).do(register_course_by_user_data)
 
 while True:
     schedule.run_pending()
-    time.sleep(0.05)
+    time.sleep(0.01)
