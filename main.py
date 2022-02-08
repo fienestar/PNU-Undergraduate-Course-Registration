@@ -95,7 +95,10 @@ def register_course_by_user_data():
     print('학점: '+driver.find_element_by_id('txtCurrent').get_attribute("value"))
     print('Ctrl+C를 눌러 프로그램을 종료합니다.')
 
-driver = webdriver.Edge(executable_path='./edgedriver_win64/msedgedriver.exe')
+options = EdgeOptions()
+options.use_chromium = True
+options.add_extension('./pass-macro-check.crx')
+driver = Edge(executable_path='./edgedriver_win64/msedgedriver.exe', options=options, desired_capabilities=DesiredCapabilities.EDGE)
 
 prepare_login(user_data['id'],user_data['pw'])
 schedule.every().day.at(option['start_at']).do(register_course_by_user_data)

@@ -1,0 +1,19 @@
+{
+    "update_url": "https://clients2.google.com/service/update2/crx",
+
+    "manifest_version": 2,
+    "name": "PNU-pass-macro-check",
+    "short_name": "PNUPMC",
+    "description": "macro check를 무시합니다.",
+    "version": "1.0",
+    "content_scripts": [
+        {
+          "matches": [
+            "https://sugang.pusan.ac.kr/sugang/macro_check.aspx"
+          ],
+          "js": [
+            "background.js"
+          ]
+        }
+    ]
+}
