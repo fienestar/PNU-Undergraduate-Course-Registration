@@ -74,7 +74,6 @@ def tostring_registration(registration):
 def register_course_by_user_data():
     login()
 
-    return;
     failed = user_data['registrations']
     
     while len(failed) != 0:
